@@ -69,3 +69,81 @@ VALUES
     ('Boarmon', '2005-06-07', 7, true, 20.40),
     ('Blossom', '1998-10-13', 3, true, 17.00),
     ('Ditto', '2022-05-14', 4, true, 22.00);
+
+-- MILESTONE 3
+
+INSERT INTO owners (full_name, age)
+VALUES
+('Sam Smith', 34),
+('Jennifer Orwell', 19),
+('Bob', 45),
+('Melody Pond', 77),
+('Dean Winchester', 14),
+('Jodie Whittaker', 38);
+
+
+INSERT INTO species (name)
+VALUES ('Pokemon'), ('Digimon')
+
+
+UPDATE animals
+    SET species_id = species.id
+    FROM species
+    WHERE species.name = 'Digimon' AND animals.name LIKE '%mon';
+UPDATE animals
+    SET species_id = species.id
+    FROM species
+    WHERE animals.name NOT LIKE '%mon' 
+        AND species.name = 'Pokemon';
+
+-- •	Modify your inserted animals to include owner information (owner_id):
+--   o	Sam Smith owns Agumon.
+--   o	Jennifer Orwell owns Gabumon and Pikachu.
+--   o	Bob owns Devimon and Plantmon.
+--   o	Melody Pond owns Charmander, Squirtle, and Blossom.
+--   o	Dean Winchester owns Angemon and Boarmon.
+
+UPDATE animals 
+    SET owner_id = owners.id
+    FROM owners
+    WHERE owners.full_name = 'Sam Smith' 
+        AND animals.name = 'Agumon';
+
+
+UPDATE animals 
+    SET owner_id = owners.id
+    FROM owners
+    WHERE owners.full_name = 'Jennifer Orwell' 
+        AND (
+            animals.name = 'Gabumon' 
+            OR animals.name = 'Pikachu'
+        );
+        
+UPDATE animals 
+    SET owner_id = owners.id
+    FROM owners
+    WHERE owners.full_name = 'Bob' 
+        AND (
+            animals.name = 'Devimon' 
+            OR animals.name = 'Plantmon'
+        );
+
+UPDATE animals 
+    SET owner_id = owners.id
+    FROM owners
+    WHERE owners.full_name = 'Melody Pond' 
+        AND (
+            animals.name = 'Charmander' 
+            OR animals.name = 'Squirtle'
+            OR animals.name = 'Blossom'
+        );
+
+
+UPDATE animals 
+    SET owner_id = owners.id
+    FROM owners
+    WHERE owners.full_name = 'Dean Winchester' 
+        AND (
+            animals.name = 'Angemon' 
+            OR animals.name = 'Boarmon'
+        );

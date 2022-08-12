@@ -13,3 +13,26 @@ CREATE TABLE animals (
 
 ALTER TABLE animals 
     ADD species VARCHAR(70);
+
+
+--MILESTONE 3
+
+CREATE TABLE owners (
+    id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    full_name VARCHAR(120),
+    age INT
+);
+
+CREATE TABLE species (
+    id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name VARCHAR(120)
+);
+
+ALTER TABLE animals 
+DROP COLUMN species;
+
+ALTER TABLE animals 
+ADD COLUMN species_id INT,
+ADD COLUMN owner_id   INT,
+ADD FOREIGN KEY (species_id) REFERENCES species(id),
+ADD FOREIGN KEY (owner_id) REFERENCES owners(id);
