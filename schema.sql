@@ -36,3 +36,26 @@ ADD COLUMN species_id INT,
 ADD COLUMN owner_id   INT,
 ADD FOREIGN KEY (species_id) REFERENCES species(id),
 ADD FOREIGN KEY (owner_id) REFERENCES owners(id);
+
+--MILESTONE 4 
+
+CREATE TABLE vets (
+    id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name VARCHAR(60),
+    age INT,
+    date_of_graduation DATE
+)
+
+CREATE TABLE specializations (
+    vets_id INT REFERENCES vets(id),
+    species_id INT REFERENCES species(id),
+    PRIMARY KEY(vets_id, species_id)
+);
+
+CREATE TABLE visits (
+    visit_date DATE,
+    animals_id INT REFERENCES animals(id),
+    vets_id    INT REFERENCES vets(id),
+    PRIMARY KEY(animals_id, vets_id)
+);
+
