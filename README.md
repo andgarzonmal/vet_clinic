@@ -1,7 +1,7 @@
-# curriculum-databases-projects-template
+# Vet_clinic
 
-> This template should be used for database related projects at Microverse.
-> Generate your own repository, update this README and edit all files content while working on projects. You should not be adding any new files unless asked otherwise.
+![image](https://user-images.githubusercontent.com/95243996/184685569-6ee14166-b33a-4fea-b3b9-4677c76ce8d1.png)
+
 
 
 ## Getting Started
