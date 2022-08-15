@@ -256,3 +256,19 @@ SELECT count(species.id),species.name
     GROUP BY species.name 
     ORDER BY count DESC
     FETCH FIRST ROW ONLY;
+
+--MILESTONE 5
+
+-- create a non-clustered index using the animal_id in the visits table
+--create index animal_id_asc on visits(animal_id asc);
+explain analyze SELECT COUNT(*) FROM visits where animal_id = 4;
+
+--explain analyze SELECT * FROM visits where vet_id = 2;
+-- create a non-clustered index using the vet_id 
+create index vet_id_asc on visits(vet_id asc);
+explain analyze SELECT * FROM visits where vet_id = 2;
+
+-- create a non-clustered index using the vet_id 
+--create index owners_mails_  on owners(email asc);
+explain analyze SELECT * FROM owners where email = 'owner_18327@mail.com';
+
